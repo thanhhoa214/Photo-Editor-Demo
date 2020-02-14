@@ -5,17 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 // import ImageViewer from "../../components/ImageViewer";
 import Gallery from "react-photo-gallery";
-import SelectedImage from "../../components/SelectedImage";
+import SelectedUploadImage from "../../components/SelectedUploadImage";
 
 const selectedImageRenderer = ({ index, left, top, key, photo }) => (
-  <SelectedImage
+  <SelectedUploadImage
     selected={false}
     key={key + index}
     margin={"2px"}
-    index={index}
     photo={photo}
-    left={left}
-    top={top}
   />
 );
 const getImage = file =>

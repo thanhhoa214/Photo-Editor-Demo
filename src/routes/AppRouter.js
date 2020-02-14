@@ -1,16 +1,12 @@
 import React from "react";
-import { createBrowserHistory as createHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "../views/Home";
 import PhotoEditor from "../views/PhotoEditor";
 import Customize from "../views/Customize";
 import Checkout from "../views/Checkout";
 
-const history = createHistory();
-
 function AppRouter() {
   return (
-    <Router history={history}>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -28,7 +24,6 @@ function AppRouter() {
           <Home />
         </Route>
       </Switch>
-    </Router>
   );
 }
 

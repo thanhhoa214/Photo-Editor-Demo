@@ -1,24 +1,30 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import TopBar from "./components/TopBar";
+import { Container } from "react-bootstrap";
+import { Router } from "react-router-dom";
+import { createBrowserHistory as createHistory } from "history";
+
 import SideBar from "./components/Sidebar";
 import ProgressBar from "./components/ProgressBar";
 
 // import ImageViewer from "./components/ImageViewer";
 import AppRouter from "./routes/AppRouter";
-import { Container } from "react-bootstrap";
+
+const history = createHistory();
 
 function App() {
   return (
     <div className="App">
-      <ProgressBar />
-      <SideBar>
-        <Container className="d-flex mt-4">
-          <AppRouter></AppRouter>
-        </Container>
-      </SideBar>
-      {/* <ImageViewer /> */}
+      <Router history={history}>
+        <ProgressBar currentStep={2} />
+        <SideBar>
+          <Container className="d-flex mt-4">
+            <AppRouter></AppRouter>
+          </Container>
+        </SideBar>
+        {/* <ImageViewer /> */}
+      </Router>
     </div>
   );
 }

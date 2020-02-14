@@ -1,13 +1,16 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Gallery from "react-photo-gallery";
-import { ToggleButtonGroup } from "react-bootstrap";
+import { ToggleButtonGroup, FormControl, Button, Form } from "react-bootstrap";
 import { ToggleButton } from "react-bootstrap";
 import FilerobotImageEditor from "filerobot-image-editor";
 import SelectedImage from "../../components/SelectedImage";
 import EditedImage from "../../components/EditedImage";
 import darkTheme from "../../themes";
+import { getDefaultUnsplashPhotos, search } from "../../utils/Unsplash";
+import { InputGroup } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
-const photos = [
+const initPhotos = [
   {
     src: "https://picsum.photos/200/300",
     width: 200,
@@ -61,6 +64,17 @@ function HomePage() {
   const [galleryMode, setGalleryMode] = useState("select");
   const [showEditor, setShowEditor] = useState(false);
   const [showEditorSrc, setShowEditorSrc] = useState("");
+  const [photos, setPhotos] = useState(initPhotos);
+
+  // useEffect(() => {
+  //   getDefaultUnsplashPhotos().then(pho => {
+  //     setPhotos(pho);
+  //   });
+
+  //   return () => {};
+  // }, []);
+
+  const handleSearch = e => {};
 
   const updateSelectAll = () => {
     setSelectAll(!selectAll);
@@ -114,6 +128,25 @@ function HomePage() {
 
   return (
     <div>
+      <Col xs={{ span: 8, offset: 2 }}>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Search free high-resolution photos..."
+            aria-label="Search free high-resolution photos"
+            aria-describedby="Search"
+          />
+          <Form.Control as="select" style={{ flex: 0.3 }}>
+            <option value="-1"> Orientation </option>
+            <option value="1">Landscape</option>
+            <option value="1">Portrait</option>
+          </Form.Control>
+          <InputGroup.Append>
+            <Button variant="success" onClick={e => console.log(e.target)}>
+              Search
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </Col>
       Grid Direction:
       <ToggleButtonGroup
         type="radio"

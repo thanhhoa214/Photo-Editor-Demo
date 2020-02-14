@@ -1,3 +1,9 @@
 .h-8 {
-    height: 8%;
+  height: 8%;
+}
+.progress-bar-link:hover,
+.progress-bar-link:focus {
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: red;
 }
