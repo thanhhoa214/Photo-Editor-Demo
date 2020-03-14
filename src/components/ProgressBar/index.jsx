@@ -21,7 +21,6 @@ const progressBarInfo = [
 function TopBar({ currentStep }) {
   const ProgressBarLabel = ({ step }) => {
     const { title, to } = progressBarInfo[step];
-    console.log(step, currentStep);
     
     if (currentStep -1 < step) {
       return <h4>{title}</h4>;
